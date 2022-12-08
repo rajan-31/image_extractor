@@ -3,6 +3,8 @@ $(document).ready(function () {
     // handle extract btn click
     $('#extract_btn').click(function () {
         const url = $('#url').val();
+        if (url != "") {
+            $('#user_msg').html('wait...');
 
         axios.get(url)
             .then(function (response) {
@@ -41,6 +43,7 @@ $(document).ready(function () {
                         const fileName = `combined-${currentDate}.zip`;
 
                         saveAs(zipBlob, fileName);
+                        $('#user_msg').html('DONE');
                     });
 
 
@@ -48,9 +51,13 @@ $(document).ready(function () {
             .catch(function (error) {
                 // handle error
                 console.log(error);
+                $('#user_msg').html(error.message);
             })
             .then(function () {
                 // always executed
             });
+        } else {
+            $('#user_msg').html('No url entered!');
+        }
     });
 });

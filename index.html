@@ -17,7 +17,9 @@
 <body>
     <input type="text" id="url" value="">
     <button id="extract_btn">Extract Images</button>
-    <div><small>! Image URL must be present on page.</small></div>
+    <div><small>*! Image URLs must be present on target page, and most IMPORTANTLY target page should support CORS
+            requests (else you get Network Error).</small></div>
+    <div id="user_msg"></div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
