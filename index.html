@@ -16,19 +16,42 @@
             margin: 20px;
         }
 
-        #url {
+        input {
             width: 100%;
+            margin-top: 5px;
             margin-bottom: 5px;
+        }
+
+        * {
+            visibility: hidden;
+        }
+        
+        #peacemaker * {
+            visibility: visible;
         }
     </style>
 </head>
 
 <body>
-    <input type="text" id="url" value="">
-    <button id="extract_btn">Extract Images</button>
-    <div><small>*! Image URLs must be present on target page, and most IMPORTANTLY target page should support CORS
-            requests (else you get Network Error).</small></div>
-    <div id="user_msg"></div>
+    <div id="peacemaker">
+        <input type="text" id="url" placeholder="URL" value="">
+        <input type="text" id="proxy" placeholder="Proxy URL (optional)" value="">
+    
+        <div>
+            <label for="proxy_for">For what to use Proxy URL?</label>
+            <select id="proxy_for">
+                <option value="0">Main URL</option>
+                <option value="1">Image Links</option>
+                <option value="2" selected="selected">Main URL and Image Links</option>
+            </select>
+        </div>
+        <!-- <input type="number" id="delay" min="0" placeholder="Delay in seconds between URL fetch and image fetch (Optional)"> -->
+        <button id="extract_btn">Extract Images</button>
+        <div><small>*! Image URLs must be present on target page.</small></div>
+        <div><small>*! Solution for "Network Error" is PROXY URL</small></div>
+        <div id="user_msg"></div>
+        </div>
+        <div id="extracted_html"></div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
