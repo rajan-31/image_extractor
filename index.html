@@ -9,7 +9,8 @@
 
     <style>
         #extracted_html {
-            visibility: hidden
+            display: none;
+            /* visibility: hidden */
         }
         
         html {
@@ -20,6 +21,10 @@
             width: 100%;
             margin-top: 5px;
             margin-bottom: 5px;
+        }
+
+        #sanitize_scripts {
+            width: fit-content;
         }
 
         * {
@@ -46,6 +51,9 @@
             </select>
         </div>
         <!-- <input type="number" id="delay" min="0" placeholder="Delay in seconds between URL fetch and image fetch (Optional)"> -->
+        <input type="checkbox" id="sanitize_scripts" checked="checked" value="true">
+        <label for="sanitize_scripts">Remove scripts when URL is fetched </label><br>
+
         <button id="extract_btn">Extract Images</button>
         <div><small>*! Image URLs must be present on target page.</small></div>
         <div><small>*! Solution for "Network Error" is PROXY URL</small></div>

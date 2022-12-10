@@ -11,11 +11,12 @@ $(document).ready(function () {
 
     // handle extract btn click
     $('#extract_btn').click(function () {
-        const proxy_url = $('#proxy').val();
+        const proxy_url = $('#proxy').val().trim();
         const proxy_for = $("#proxy_for").val();
-        const sanitize_scripts = true;
+        const sanitize_scripts = $("#sanitize_scripts").is(":checked");
 
-        const url = proxy_url == "" || proxy_for == 1 ? $('#url').val() : proxy_url + $('#url').val();
+        const url = proxy_url == "" || proxy_for == 1 ? $('#url').val().trim() : proxy_url + $('#url').val().trim();
+
         console.log("Main URL: " + url);
 
 
@@ -28,7 +29,7 @@ $(document).ready(function () {
                 console.log(`Response Status: ${response.status}`);
 
                 //------------------------------------------------
-                let temp_html = $.parseHTML(response.data);
+                let temp_html = $.parseHTML(response.data, context, sanitize_scripts);
 
                 console.log(temp_html);
                 let sanitized_html = temp_html.filter((elt) => {
