@@ -44,7 +44,10 @@ $(document).ready(function () {
                         $('#extracted_html').append(sanitized_html);
 
                         // get image urls
-                        let e_all = $('#extracted_html').find('img').map(function () { return this.src; }).get();
+                        let e_img = $('#extracted_html').find('img').map(function () { return this.src; }).get();
+                        let e_a = $('#extracted_html').find('a').map(function () { return this.href; }).get();
+
+                        let e_all = [...e_img, ...e_a];
 
                         // get pure urls
                         let e_pure = [];
