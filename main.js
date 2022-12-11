@@ -99,7 +99,8 @@ $(document).ready(function () {
                         zip.generateAsync({ type: "blob" })
                             .then(function (zipBlob) {
                                 const currentDate = new Date().getTime();
-                                const fileName = `combined-${currentDate}.zip`;
+                                // const fileName = `combined-${currentDate}.zip`;
+                                const fileName = `${$('#extracted_html title').text().replace(" ", "_")}-${currentDate}.zip`;
 
                                 saveAs(zipBlob, fileName);
                                 $('#user_msg').html('DONE');
