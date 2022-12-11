@@ -29,7 +29,7 @@ $(document).ready(function () {
                 console.log(`Response Status: ${response.status}`);
 
                 //------------------------------------------------
-                let temp_html = $.parseHTML(response.data, context, sanitize_scripts);
+                let temp_html = $.parseHTML(response.data, null, sanitize_scripts);
 
                 console.log(temp_html);
                 let sanitized_html = temp_html.filter((elt) => {
@@ -97,6 +97,7 @@ $(document).ready(function () {
 
                         saveAs(zipBlob, fileName);
                         $('#user_msg').html('DONE');
+
                     });
 
 
