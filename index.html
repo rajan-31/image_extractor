@@ -16,27 +16,31 @@
             display: none;
             /* visibility: hidden */
         }
-        
+
         html {
             margin: 20px;
         }
 
-        input {
+        input, #direct_img_links {
             width: 100%;
             margin-top: 5px;
             margin-bottom: 5px;
         }
 
-        #sanitize_scripts {
+        #sanitize_scripts, #show_logs, #clear_logs_auto {
             width: fit-content;
         }
 
         * {
             visibility: hidden;
         }
-        
+
         #peacemaker * {
             visibility: visible;
+        }
+
+        #min_size {
+            width: 80px;
         }
     </style>
 </head>
@@ -44,8 +48,9 @@
 <body>
     <div id="peacemaker">
         <input type="text" id="url" placeholder="URL" value="">
+        <textarea id="direct_img_links" cols="" rows="4" placeholder="Direct image links (Optional) *one on each line"></textarea>
         <input type="text" id="proxy" placeholder="Proxy URL (optional)" value="">
-    
+
         <div>
             <label for="proxy_for">For what to use Proxy URL?</label>
             <select id="proxy_for">
@@ -58,17 +63,36 @@
         <input type="checkbox" id="sanitize_scripts" checked="checked" value="true">
         <label for="sanitize_scripts">Remove scripts when URL is fetched </label><br>
 
+        <div>
+            <label for="min_size">Minimum image size (Optional): </label>
+            <input type="number" id="min_size" min="0" value=""> kB
+        </div>
+
         <button id="extract_btn">Extract Images</button>
         <div><small>*! Image URLs must be present on target page.</small></div>
         <div><small>*! Solution for "Network Error" is PROXY URL</small></div>
-        <div id="user_msg"></div>
-        </div>
-        <div id="extracted_html"></div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
-        <script src="./main.js"></script>
-        </body>
+        <p style="text-decoration: underline;">MESSAGE:</p>
+        <div id="user_msg"></div>
+
+        <p style="margin-top: 20px; text-decoration: underline;">LOGS:</p>
+        <input type="checkbox" id="show_logs" checked="checked">
+        <label for="show_logs">Live logs</label>
+        <input type="checkbox" id="clear_logs_auto">
+        <label for="clear_logs_auto">Auto clear logs</label>
+        <button id="clear_logs">Click to clear logs</button>
+
+        <div>Total files: <span id="total_files">0</span></div>
+        <div>Total size: <span id="total_size">0</span> kB</div>
+        <div id="user_log"></div>
+    </div>
+    <div id="extracted_html"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
 </html>
